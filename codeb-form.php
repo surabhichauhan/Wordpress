@@ -7,8 +7,19 @@ Author URI: https://www.youtube.com/user=bellacynosure
 Version: 1
 */
 
-global $wpdb;
+defined( 'ABSPATH' ) or die( 'No script ' );
 
+global $wpdb;
+ 
+
+//Installer
+function form_install () {
+
+	require_once( dirname( __FILE__ ) . '/installer.php' );
+
+}
+
+register_activation_hook( __FILE__, 'form_install' ); 
 function CodebFormInclude(){
 	include( 'includes/form.php' );
 }

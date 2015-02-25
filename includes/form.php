@@ -2,6 +2,18 @@
 
 global $current_user, $wpdb;
 wp_get_current_user();
+
+$username = esc_html( $_POST['username'] );
+$gender = esc_html( $_POST['gender'] );
+$technical_stack = esc_html( $_POST['technical-stack'] );
+$email = esc_html( $_POST['emailid'] );
+$mobile = esc_html( $_POST['mobile'] );
+$job_type = esc_html( $_POST['job-type'] ); 
+$experience = esc_html( $_POST['experience'] );
+$current = esc_html( $_POST['current-ctc'] );
+$expected = esc_html( $_POST['expected'] );
+
+
 echo '
     <style>
 	div {
@@ -11,10 +23,12 @@ echo '
 	input{
 		margin-bottom:4px;
 	}
+
 	</style>
 	';
 
 echo'
+<h2> Apply for Job </h2> <br>
 <form action="' . $_SERVER['REQUEST_URI'] . '" method="post">
 <div>
 	<label for="username">Name <strong>*</strong></label>
@@ -31,9 +45,9 @@ echo'
 <div>
 	<label for="technical-stack">Technical Stack <strong>*</strong></label>
 	<select name="technical-stack">
-	<option value="Web Development ' . (isset($_POST['technical-stack']) ? $technical-stack : null) . '">Web Development </option>
-	<option value="Mobile Development ' . (isset($_POST['technical-stack']) ? $technical-stack : null) . '">Mobile Development</option>
-	<option value="Designing ' . (isset($_POST['technical-stack']) ? $technical-stack : null) . '">Designing</option>
+	<option value="Web Development ' . (isset($_POST['technical-stack']) ? $technical_stack : null) . '">Web Development </option>
+	<option value="Mobile Development ' . (isset($_POST['technical-stack']) ? $technical_stack : null) . '">Mobile Development</option>
+	<option value="Designing ' . (isset($_POST['technical-stack']) ? $technical_stack : null) . '">Designing</option>
     </select>
 </div>
 
@@ -48,8 +62,8 @@ echo'
 <div>
 	<label for="job-type">Job Type <strong>*</strong></label>
 	<select name="job-type">
-	<option value="Full-Time ' . (isset($_POST['job-type']) ? $job-type : null) . '">Full Time </option>
-	<option value="Internship ' . (isset($_POST['job-type']) ? $job-type : null) . '">Internship</option>
+	<option value="Full-Time ' . (isset($_POST['job-type']) ? $job_type : null) . '">Full Time </option>
+	<option value="Internship ' . (isset($_POST['job-type']) ? $job_type : null) . '">Internship</option>
     </select>
 </div>
 <div>
@@ -58,7 +72,7 @@ echo'
 </div>
 <div>
 	<label for="current-ctc">Current CTC <strong>*</strong></label>
-	<input type="text" name="current-ctc" value="' . (isset($_POST['current-ctc']) ? $current-ctc : null) . '">
+	<input type="text" name="current-ctc" value="' . (isset($_POST['current-ctc']) ? $current : null) . '">
 </div>
 <div>
 	<label for="expected-ctc">Expected CTC <strong>*</strong></label>
