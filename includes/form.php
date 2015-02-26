@@ -1,17 +1,7 @@
 <?php
 
 global $current_user, $wpdb;
-wp_get_current_user();
 
-$username = esc_html( $_POST['username'] );
-$gender = esc_html( $_POST['gender'] );
-$technical_stack = esc_html( $_POST['technical-stack'] );
-$email = esc_html( $_POST['emailid'] );
-$mobile = esc_html( $_POST['mobile'] );
-$job_type = esc_html( $_POST['job-type'] ); 
-$experience = esc_html( $_POST['experience'] );
-$current = esc_html( $_POST['current-ctc'] );
-$expected = esc_html( $_POST['expected'] );
 
 
 echo '

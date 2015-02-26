@@ -2,9 +2,15 @@
 //***** Installer *****
 global $wp_version, $wpdb;
 
+if ( version_compare( $wp_version, '3.0', '<' ) ) {
+	require_once( ABSPATH . 'wp-admin/upgrade.php' );
+} else {
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+}
+
 if( $wpdb->get_var( 'SHOW TABLES LIKE "' . SUBTABLE . '"' ) != SUBTABLE ) 
-{  
-	$sql = 'CREATE TABLE ' . SUBTABLE . ' (
+{
+	$sql = 'CREATE TABLE'  .SUBTABLE. ' (
 		  id int(12) NOT NULL auto_increment,
 		  user_name varchar(150) NOT NULL,
 		  gender varchar(250) NOT NULL,
@@ -20,5 +26,11 @@ if( $wpdb->get_var( 'SHOW TABLES LIKE "' . SUBTABLE . '"' ) != SUBTABLE )
 		  pubdate datetime NOT NULL,
 		  PRIMARY KEY  (id)
 		);';
+}
+require( ABSPATH . 'wp-admin/includes/upgrade.php' );
+
 	dbDelta( $sql );
-}	
+
+add_option( 'resume_widget_title', 'CV Submission' );
+
+?>

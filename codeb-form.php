@@ -2,24 +2,25 @@
 /*
 Plugin Name: Codeb Form
 Description: Form plugin for codebibber website
-Aurthor: Surabhi Chauhan
+Author: Surabhi Chauhan
 Author URI: https://www.youtube.com/user=bellacynosure
 Version: 1
 */
 
-defined( 'ABSPATH' ) or die( 'No script ' );
-
 global $wpdb;
- 
+
+define( 'SUBTABLE', $wpdb->prefix . 'cb_submissions' );
+
 
 //Installer
 function form_install () {
 
-	require_once( dirname( __FILE__ ) . '/installer.php' );
+	require_once( dirname( __FILE__ ) . '\installer.php' );
 
 }
 
 register_activation_hook( __FILE__, 'form_install' ); 
+
 function CodebFormInclude(){
 	include( 'includes/form.php' );
 }
