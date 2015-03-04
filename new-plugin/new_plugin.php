@@ -61,3 +61,14 @@ function new_form_include()
 add_shortcode('the_form','new_form_include');
 
 
+/***add menu page for admin***/
+
+function admin_menu_page(){
+
+	include('admin/admin.php');
+}
+function new_plugin_menu()
+{
+	add_menu_page('New Form Options ','New From ', 'manage_options', 'new-form-plugin', 'admin_menu_page');
+}
+add_action('admin_menu', 'new_plugin_menu');
