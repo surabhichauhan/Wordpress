@@ -1,3 +1,12 @@
 .goodreads-message {
+	color:green;
+	border: 1px solid #ccc; padding:5px; 
+}
+.goodreads-message.blue {
+	color:blue;
+	border: 1px solid #ccc; padding:5px; 
+}
+.goodreads-message.red {
 	color:red;
+	border: 1px solid #ccc; padding:5px; 
 }
