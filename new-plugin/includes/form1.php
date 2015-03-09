@@ -1,10 +1,44 @@
 <?php
-global $current_user, $wpdb;
+global $current_user, $wpdb, $username,$gender, $email, $technical_stack,$job_type,$mobile,
+       $experience, $current, $expected , $message;
+
+
+ if (isset($_POST['submit'])) {
+
+$username = esc_html( $_POST['username'] );
+$gender = esc_html( $_POST['gender'] );
+$technical_stack = esc_html( $_POST['technical-stack'] );
+$email 	= 	sanitize_email($_POST['emailid']);
+$mobile = esc_html( $_POST['mobile'] );
+$job_type = esc_html( $_POST['job-type'] );
+$experience = 	sanitize_text_field($_POST['experience']);
+$current 	= 	sanitize_text_field($_POST['current-ctc']);
+$expected  	= 	sanitize_text_field($_POST['expected']);
+$message 	= 	esc_textarea($_POST['message']);
+
+
+$table_name = $wpdb->prefix . 'newplugin';
+ $insertQuery = $wpdb->query('INSERT INTO ' . $table_name. ' VALUES ( NULL,
+																		"' . $username . '",
+																		"' . $gender . '",
+																		"' . $technical_stack . '",
+																		"' . $email . '",
+																		"' . $mobile . '",
+																		"' . $job_type . '",
+																		"' . $experience . '",
+																		"' . $current . '",
+																		"' . $expected . '",
+																		"' . $message . '")' );
+
+if($insertQuery) {
+	echo "submitted";
+} else { echo "try again";}
+}
 
 
 echo '
 <h2>Apply here for job</h2> <br>
-<form  action="' . $_SERVER['REQUEST_URI'] . '" method="post">
+<form  action="' . $_SERVER['REQUEST_URI'] . '" method="post" enctype="form-data/multipart">
 <div>
 	<label for="username">Name <strong>*</strong></label>
 	<input type="text" name="username" value="' . (isset($_POST['username']) ? $username : null) . '">

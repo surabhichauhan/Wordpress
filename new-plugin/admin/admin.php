@@ -1,2 +1,2 @@
 <?php
-echo "hi, page is coming soon";
+echo "page coming soon";
