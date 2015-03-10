@@ -1,9 +1,11 @@
 <?php
 global $current_user, $wpdb, $username,$gender, $email, $technical_stack,$job_type,$mobile,
-       $experience, $current, $expected , $message;
+       $experience, $current, $expected , $message, $reg_errors;
 
 
  if (isset($_POST['submit'])) {
+
+if (!empty($_POST['username']) && !empty($_POST['emailid']) && !empty($_POST['mobile']) ){
 
 $username = esc_html( $_POST['username'] );
 $gender = esc_html( $_POST['gender'] );
@@ -16,9 +18,8 @@ $current 	= 	sanitize_text_field($_POST['current-ctc']);
 $expected  	= 	sanitize_text_field($_POST['expected']);
 $message 	= 	esc_textarea($_POST['message']);
 
-
 $table_name = $wpdb->prefix . 'newplugin';
- $insertQuery = $wpdb->query('INSERT INTO ' . $table_name. ' VALUES ( NULL,
+$insertQuery = $wpdb->query('INSERT INTO ' . $table_name. ' VALUES ( NULL,
 																		"' . $username . '",
 																		"' . $gender . '",
 																		"' . $technical_stack . '",
@@ -32,13 +33,15 @@ $table_name = $wpdb->prefix . 'newplugin';
 
 if($insertQuery) {
 	echo "submitted";
-} else { echo "try again";}
+}
+
+} else { echo "Some required Fields Missing";}
 }
 
 
 echo '
 <h2>Apply here for job</h2> <br>
-<form  action="' . $_SERVER['REQUEST_URI'] . '" method="post" enctype="form-data/multipart">
+<form  action="' . $_SERVER['REQUEST_URI'] . '" method="post" class="form" enctype="form-data/multipart" autocomplete="off">
 <div>
 	<label for="username">Name <strong>*</strong></label>
 	<input type="text" name="username" value="' . (isset($_POST['username']) ? $username : null) . '">
@@ -62,11 +65,11 @@ echo '
 
 <div>
 	<label for="emailid">Email-ID <strong>*</strong></label>
-	<input type="text" name="emailid" value="' . (isset($_POST['emailid']) ? $email : null) . '">
+	<input type="text" name="emailid"  value="' . (isset($_POST['emailid']) ? $email : null) . '">
 </div><br>
 <div>
 	<label for="mobile_num">Mobile Number <strong>*</strong></label>
-	<input type="text" name="mobile" value="' . (isset($_POST['mobile']) ? $mobile : null) . '">
+	<input type="tel" name="mobile"  value="' . (isset($_POST['mobile']) ? $mobile : null) . ' ">
 </div><br>
 <div>
 	<label for="job-type">Job Type <strong>*</strong></label>
@@ -87,11 +90,12 @@ echo '
 	<label for="expected-ctc">Expected CTC <strong>*</strong></label>
 	<input type="text" name="expected" value="' . (isset($_POST['expected']) ? $expected : null) . '">
 </div><br>
+
 <div>
 	<label for="message">Message<strong></strong></label>
 	<textarea name="message" value="' . (isset($_POST['message']) ? $message : null) . '"></textarea>
 </div><br>
-
-<input type="submit" name="submit" value="Apply"/><br>
+<center>
+<input type="submit" name="submit" value="Apply" /><br></center>
 	</form>
 	';

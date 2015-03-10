@@ -34,7 +34,7 @@ function newplugin_activate()
 		        experience varchar(50) NOT NULL,
 		        current_ctc varchar(20) NOT NULL,
 		        expected_ctc varchar(20) NOT NULL,
-		        cover text NOT NULL,
+		      
 		        resume text NOT NULL,
 		        message varchar(200),
 				PRIMARY KEY  (id) )';
