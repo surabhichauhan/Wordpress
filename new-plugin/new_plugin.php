@@ -32,10 +32,8 @@ function newplugin_activate()
 		        contact_number varchar(50) NOT NULL,
 		        job_type varchar(15) NOT NULL,
 		        experience varchar(50) NOT NULL,
-		        current_ctc varchar(20) NOT NULL,
-		        expected_ctc varchar(20) NOT NULL,
-		      
-		        resume text NOT NULL,
+		        current_ctc varchar(20) ,
+		        expected_ctc varchar(20) ,
 		        message varchar(200),
 				PRIMARY KEY  (id) )';
 		

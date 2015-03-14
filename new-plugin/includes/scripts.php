@@ -7,4 +7,3 @@ function np_load_scripts(){
 }
 
 add_action('wp_enqueue_scripts','np_load_scripts');
-

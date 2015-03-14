@@ -3,7 +3,7 @@ global $current_user, $wpdb, $username,$gender, $email, $technical_stack,$job_ty
        $experience, $current, $expected , $message, $reg_errors;
 
 
- if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
 
 if (!empty($_POST['username']) && !empty($_POST['emailid']) && !empty($_POST['mobile']) ){
 
